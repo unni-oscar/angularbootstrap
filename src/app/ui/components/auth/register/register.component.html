@@ -4,24 +4,34 @@
             <div class="login-popup-heading text-center">
                 <h4><i class="fa fa-user" aria-hidden="true"></i> Register </h4>                        
             </div>                                    
-            <form id="loginMember" role="form" action="" method="post">
+            <form [formGroup]="registerForm"  (ngSubmit)="registerUser()">
                 <div class="form-group">
-                    <input type="text" class="form-control" id="name" placeholder="Name" name="name">
-                    <!-- <small>asdasds</small> -->
+                    <input type="text" formControlName="name" class="form-control" id="name" placeholder="Name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+                    <span *ngIf="submitted && f.name.errors" class="error">
+                        <small *ngIf="f.name.errors.required">Name is required</small>
+                    </span>
                   </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="user_id" placeholder="e-mail / Mobile no" name="user_id">
+                    <input type="text" formControlName="email" class="form-control" id="email" placeholder="E-mail" name="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                    <span *ngIf="submitted && f.email.errors" class="error">
+                        <small *ngIf="f.email.errors.required">Name is required</small>
+                        <small *ngIf="f.email.errors.email">Email must be a valid email address</small>
+                    </span>
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+                    <input type="password" formControlName="password" class="form-control" id="password" placeholder="Password" name="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                    <span *ngIf="submitted && f.password.errors" class="error">
+                        <small *ngIf="f.password.errors.required">Password is required</small>
+                    </span>
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" id="re-password" placeholder="Retype Password" name="re-password">
+                    <input type="password" formControlName="repassword" class="form-control" id="re-password" placeholder="Retype Password" name="repassword" [ngClass]="{ 'is-invalid': submitted && f.repassword.errors }">
+                   
                 </div>
-                <button type="submit" class="btn btn-default login-popup-btn" name="submit" value="1">Register</button>
+                <button type="submit"  class="btn btn-default login-popup-btn" >Register</button>
             </form>
           
             <div class="text-center">Already registered? Click<a  [routerLink]="['/login']"> here</a></div>
         </div>
     </div>
-  </div>
+</div>

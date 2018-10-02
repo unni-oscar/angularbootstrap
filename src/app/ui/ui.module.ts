@@ -10,11 +10,13 @@ import { AboutComponent } from './components/about/about.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { ResetPasswordComponent } from './components/auth/reset-password/reset-password.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
   ],
   declarations: [HeaderComponent, FooterComponent, SecureLayoutComponent, PublicLayoutComponent, DashboardComponent, AboutComponent, LoginComponent, RegisterComponent, ResetPasswordComponent],
   exports: [ SecureLayoutComponent, PublicLayoutComponent]
